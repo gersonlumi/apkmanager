@@ -52,8 +52,10 @@ Este projeto contém um **script em batch** desenvolvido para execução em sist
 
 ## Dataset para Testes  
 
-O repositório inclui uma pasta com **900 APKs infectados** (divididos em 6 partes), retirados do dataset **AndroZoo**, para serem utilizados nos testes,
-se necessário.  
+No link abaixo é possível obter **900 APKs infectados** (divididos em 6 partes), retirados do dataset **AndroZoo**, para serem utilizados nos testes,
+se necessário. 
+
+https://drive.google.com/drive/folders/1J1mhyqt6uxnwSBzzM0Bon3MxNr5DeW_J?usp=sharing
 
 ---
 
