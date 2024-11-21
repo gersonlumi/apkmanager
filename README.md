@@ -58,7 +58,9 @@ As amostras foram retiradas do dataset **AndroZoo**. Os filtros aplicados para o
 - Período de Julho de 2022 a Julho de 2024.
 - Detecção por no minimo 30 soluções de antivírus do serviço VirusTotal.
 
-https://drive.google.com/drive/folders/1J1mhyqt6uxnwSBzzM0Bon3MxNr5DeW_J?usp=sharing
+https://drive.google.com/drive/folders/1Phpi-Fb8oq3SN_nGJUzXzuHGdQrmZ2v-?usp=sharing
+
+Senha para descompactar os arquivos: apkmanager
 
 ---
 
