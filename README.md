@@ -52,7 +52,7 @@ Este projeto contém um **script em batch** desenvolvido para execução em sist
 
 ## Dataset para Testes  
 
-No link abaixo é possível obter **900 APKs infectados** (divididos em 6 partes) para serem utilizados nos testes se necessário.
+No link abaixo é possível obter **900 APKs infectados** (divididos em 6 partes) para serem utilizados se necessário.
 As amostras foram retiradas do dataset **AndroZoo**. Os filtros aplicados para obter os APKs foram:
 
 - Período de Julho de 2022 a Julho de 2024.
