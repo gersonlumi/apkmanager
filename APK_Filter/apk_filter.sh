@@ -21,7 +21,7 @@ function read_var() {
 APIKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 # Inputs Default
-inputdefault="./SETUP/latest_with-added-date.csv.gz"
+inputdefault="./latest_with-added-date.csv.gz"
 dataini_default="2022-07"
 datafin_default="2024-07"
 min_antivirus_default="25"
@@ -31,7 +31,7 @@ tamanhomax_default="100"
 
 # Lê as variáveis
 echo
-input=$(read_var "Digite o nome do arquivo gzip" $inputdefault)
+input=$(read_var "Digite o caminho onde está o arquivo do Dataset" $inputdefault)
 echo
 min_avs=$(read_var "Digite a quantidade mínima de AntiVírus" $min_antivirus_default )
 echo

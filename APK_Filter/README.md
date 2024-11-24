@@ -13,23 +13,28 @@ Esta pasta contém um shell script para efetuar pesquisas no Dataset AndroZoo.
 ## Configuração  
 
 1. **Pré-requisitos** 
-   - Deixe a estrutura de pastas da forma que foi clonada. Outras pastas necessárias serão criadas automaticamente após a execução do script.
-
-   - É necessário obter uma **API Key** para efetuar o download das amostras - Coloque ela na linha 21 do script - https://androzoo.uni.lu/access
-
-   - Dentro da pasta  **SETUP** é necessário colocar o arquivo do Dataset - https://androzoo.uni.lu/static/lists/latest_with-added-date.csv.gz.
+   
+   - É necessário obter o arquivo do Dataset através site oficial - https://androzoo.uni.lu/static/lists/latest_with-added-date.csv.gz
 
    - Uma versão do Dataset (Agosto de 2024) pode ser encontrada neste link: https://drive.google.com/drive/folders/1Phpi-Fb8oq3SN_nGJUzXzuHGdQrmZ2v-
+
+   - Coloque o script e o arquivo do Dataset na mesma pasta
+
+   - É necessário obter uma **API Key** para efetuar o download das amostras - Altere a linha 21 do script - https://androzoo.uni.lu/access
+
+  
 
 2. **Execução**  
   Ao rodar o script, ele irá requisitar algumas informações, para todas elas existem valores padrão que são configurados nas linhas 24 a 30 do script.  
 
-     - Nome do arquivo gzip - Nome do arquivo do Dataset.
+     - Arquivo do Dataset
+
+Caminho completo do arquivo do Dataset. Padrão: ./latest_with-added-date.csv.gz
 
      - Quantidade mínima de AntiVírus 
      - Quantidade máxima de AntiVírus
     
-  Os valores acima representam o número de antivírus que identificou determinada amostra como malware. Detalhes desse processo de avaliação podem ser obtidos através da documentação do Dataset. 
+Os valores acima representam o número de antivírus que identificou determinada amostra como malware. Detalhes desse processo de avaliação podem ser obtidos através da documentação do Dataset. 
 
      - Data inicial (aaaa-mm)
      - Data final (aaaa-mm)
@@ -43,7 +48,7 @@ Os valores acima servem para limitar os tamanho das amostras que você deseja ob
 
       - Lojas de origem das amostras
 
-As amostras do Dataset são provenientes de diversas lojas, incluindo a Google Play Store. As opções do script permitem efetuar alguns filtros dentre as lojas - https://androzoo.uni.lu/markets
+As amostras do Dataset são provenientes de diversas lojas, incluindo a **Google Play Store**. As opções do script permitem efetuar alguns filtros dentre as lojas - https://androzoo.uni.lu/markets
 
 
 Após os valores preenchidos, o script irá efetuar a pesquisa dentro do arquivo, isso pode demorar alguns minutos. 
