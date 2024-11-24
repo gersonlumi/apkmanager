@@ -1,9 +1,16 @@
 
+# APK_MANAGER REPO
+
+Repositório contendo:
+
+- Script `apk_filter.sh` para efetuar a seleção e download das amostras do Dataset AndroZoo. Detalhes deste script estão na pasta correspondente.
+
+- Script `apk_manager.bat` para executar a instalação e remoção de APKs em dispositivos Android. Detalhes abaixo.
+
 # APK_MANAGER  
 
-Repositório contendo um script para instalação e remoção de APKs em dispositivos Android. 
-
-Este projeto contém um **script em batch** desenvolvido para execução em sistemas operacionais **Windows**. Ele realiza a instalação e remoção de APKs, além de gerar logs detalhados para análise.  
+O **script em batch** apk_manager foi desenvolvido para execução em sistemas operacionais **Windows**. Ele realiza a instalação e remoção de APKs nos
+dispositivos, além de gerar logs detalhados para análise.  
 
 ## Funcionalidades  
 - **Instalação de APKs:** Instale múltiplos APKs automaticamente em 1 ou mais dispositivos Android.  
