@@ -5,8 +5,8 @@ Esta pasta contém um shell script para efetuar pesquisas no Dataset AndroZoo.
 
 ## Funcionalidades  
 - **Seleção das amostras:** É possível filtrar os apks presentes no arquivo do Dataset AndroZoo.  
-- **Download das amostras:** Após executar o processo de seleção, é possível efetuar o download das amostras filtradas.  
-- **Geração de Logs:** Produz logs detalhados das amostras que foram selecionadas. 
+- **Download das amostras:** Após executar o processo de seleção, é possível efetuar o download das amostras.  
+- **Geração de Logs:** Produz logs detalhados contendo detalhes das amostras que foram selecionadas. 
 
 ---
 
@@ -25,7 +25,8 @@ Esta pasta contém um shell script para efetuar pesquisas no Dataset AndroZoo.
   
 
 2. **Execução**  
-  Ao rodar o script, ele irá requisitar algumas informações, para todas elas existem valores padrão que são configurados nas linhas 24 a 30 do script.  
+
+Ao rodar o script, ele irá requisitar algumas informações, para todas elas existem valores padrão que são configurados nas linhas 24 a 30 do script.  
 
      - Arquivo do Dataset
 
