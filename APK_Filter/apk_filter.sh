@@ -97,23 +97,28 @@ formatted_enddate=$(date -d "$enddate-01" '+%b%y' | sed 's/.*/\u&/') # Converte 
 }
 
 # Menu de seleção para lojas
-echo "Quais lojas?"
+echo "Escolha as lojas de origem das amostras"
 echo
-select sn in "Todas" "Exceto_LojasChinesas" "Somente_LojasChinesas" "Somente_GooglePlayStore"; do
+select sn in \
+    "Todas" \
+    "Exceto_LojasChinesas (anzhi, appchina, mi.com, angeeks, hiapk)" \
+    "Somente_LojasChinesas" \
+    "Somente_GooglePlayStore (play.google.com)"; do
+    echo
     case $sn in
         Todas )
             lojas=TodasLojas
             process_data '{if ($5 >= minsize && $5 <= maxsize && $8 >= min_avs && $8 <= max_avs && $11 >= begindate && $11 <= enddate) print}'
             break;;
-        Exceto_LojasChinesas )
+        "Exceto_LojasChinesas (anzhi, appchina, mi.com, angeeks, hiapk)" )
             lojas=Exceto_LojasChinesas
-            process_data '{if ($12 !~ /anzhi/ && $12 !~ /appchina/ && $5 >= minsize && $5 <= maxsize && $8 >= min_avs && $8 <= max_avs && $11 >= begindate && $11 <= enddate) print}'
+            process_data '{if ($12 !~ /anzhi|appchina|mi\.com|angeeks|hiapk/ && $5 >= minsize && $5 <= maxsize && $8 >= min_avs && $8 <= max_avs && $11 >= begindate && $11 <= enddate) print}'
             break;;
-        Somente_LojasChinesas )
+        "Somente_LojasChinesas" )
             lojas=Somente_LojasChinesas
-            process_data '{if ($12 ~ /anzhi/ && $12 ~ /appchina/ && $5 >= minsize && $5 <= maxsize && $8 >= min_avs && $8 <= max_avs && $11 >= begindate && $11 <= enddate) print}'
+            process_data '{if ($12 ~ /^(anzhi|appchina|mi\.com|angeeks|hiapk)$/ && $5 >= minsize && $5 <= maxsize && $8 >= min_avs && $8 <= max_avs && $11 >= begindate && $11 <= enddate) print}'
             break;;
-        Somente_GooglePlayStore )
+        "Somente_GooglePlayStore (play.google.com)" )
             lojas=GooglePlayStore
             process_data '{if ($12 ~ /play\.google\.com/ && $5 >= minsize && $5 <= maxsize && $8 >= min_avs && $8 <= max_avs && $11 >= begindate && $11 <= enddate) print}'
             break;;

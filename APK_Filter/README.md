@@ -1,7 +1,7 @@
 
 # APK_FILTER 
 
-Esta pasta contém um script em bash para efetuar pesquisas no Dataset AndroZoo. 
+Esta pasta contém um shell script para efetuar pesquisas no Dataset AndroZoo. 
 
 ## Funcionalidades  
 - **Seleção das amostras:** É possível filtrar os apks presentes no arquivo do Dataset AndroZoo.  
@@ -41,9 +41,17 @@ As datas acima representam o período que as amostras foram inseridas no Dataset
 
 Os valores acima servem para limitar os tamanho das amostras que você deseja obter.
 
+      - Lojas de origem das amostras
+
+As amostras do Dataset são provenientes de diversas lojas, incluindo a Google Play Store. As opções do script permitem efetuar alguns filtros dentre as lojas - https://androzoo.uni.lu/markets
+
 
 Após os valores preenchidos, o script irá efetuar a pesquisa dentro do arquivo, isso pode demorar alguns minutos. 
-Ao fim da pesquisa, será mostrado na tela o número de amostras identificadas e também aparecerá a opção de efetuar o download das amostras.
+
+Ao fim da pesquisa, será mostrado na tela o número de entradas encontradas e uma opcão para salvar ou não a pesquisa.
+
+Caso opte por salvar, uma opção para efetuar o download das amostras será exibida. Dentro dessa opção será possível escolher quantas amostras baixar
+aleatoriamente (comando "shuf"). Esta opção é útilo caso, por exemplo, sua pesquisa encontrou 2000 amostras mas você só precisa de 100 APKs para os testes.
 
 ---
 
