@@ -24,8 +24,8 @@ APIKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 inputdefault="./latest_with-added-date.csv.gz"
 dataini_default="2022-07"
 datafin_default="2024-07"
-min_antivirus_default="25"
-max_antivirus_default="30"
+min_antivirus_default="20"
+max_antivirus_default="60"
 tamanhomin_default="0"
 tamanhomax_default="100"
 
@@ -61,18 +61,16 @@ lista_sha256_pkgname="SHA256_PKGNAME.csv"
 lista_stores="Lojas.csv"
 
 # Função para efetuar o filtro na lista usando processamento paralelo
-# Função para efetuar o filtro na lista usando processamento paralelo
 function process_data() {
-     # Converte a data para o formato desejado
-formatted_begindate=$(date -d "$begindate-01" '+%b%y' | sed 's/.*/\u&/') # Converte para formato Jan20
-formatted_enddate=$(date -d "$enddate-01" '+%b%y' | sed 's/.*/\u&/') # Converte para formato Jun24
+# Converte a data para o formato desejado
+formatted_begindate=$(date -d "$begindate-01" '+%b%y' | sed 's/.*/\u&/') # Converte para formato mmaa
+formatted_enddate=$(date -d "$enddate-01" '+%b%y' | sed 's/.*/\u&/') # Converte para formato mmaa
 
 # Pasta de destino dos APKs com datas formatadas
     workfolder="./PESQUISAS/${formatted_begindate}_${formatted_enddate}/${min_avs}_${max_avs}AVs/${lojas}/${tamanhomin}_${tamanhomax}MB"
-    apksfolder=$workfolder/apks/
     local filter="$1"
-    mkdir -p $apksfolder
-    
+    mkdir -p $workfolder
+
     # Medir o tempo de execução do zcat e do processamento
     start_time=$(date +%s)
 
@@ -96,8 +94,9 @@ formatted_enddate=$(date -d "$enddate-01" '+%b%y' | sed 's/.*/\u&/') # Converte 
     
 }
 
+echo
 # Menu de seleção para lojas
-echo "Escolha as lojas de origem das amostras"
+echo "Escolha as lojas de origem das amostras:"
 echo
 select sn in \
     "Todas" \
@@ -130,7 +129,8 @@ echo "Salvar esta pesquisa?"
 select sn in "Sim" "Não"; do
     case $sn in
         Sim)
-            mv $workfolder ${workfolder}_${line_count}
+            mkdir $workfolder/${line_count}
+            mv $workfolder/*.* $workfolder/${line_count}/
             break;;            
         Não)
             rm -rf "${workfolder}"
@@ -138,17 +138,18 @@ select sn in "Sim" "Não"; do
     esac
 done
 
-
+echo
 echo "Efetuar o download dos APKs agora?"
 select sn in "Sim" "Não"; do
     case $sn in
         "Sim")
-            workfolder="${workfolder}_${line_count}"
+            workfolder="${workfolder}/${line_count}"
             apksfolder=$workfolder/apks/
             # Criar a pasta de destino se não existir
             mkdir -p "$apksfolder"
             
             # Número de arquivos para baixar
+            echo
             read -p "Quantos APKs deseja baixar aleatoriamente? " num_apks
 
             # Defina o número de downloads simultâneos
@@ -160,15 +161,18 @@ select sn in "Sim" "Não"; do
             # Use xargs para executar o wget em paralelo e registrar os downloads bem-sucedidos
             shuf -n "$num_apks" "${workfolder}/${lista_sha256_pkgname}" | xargs -P "$num_parallel_downloads" -I {} bash -c '
                 line="{}"
-                sha256=$(echo "$line" | awk -F, "{print  \$1}")
+                sha256=$(echo "$line" | awk -F, "{print \$1}")
                 url="https://androzoo.uni.lu/api/download?apikey='$APIKEY'&sha256=$sha256"
-                if wget --retry-on-http-error=502,503 -N --content-disposition -P "'$apksfolder'" "$url"; then
-                    echo "$line" >> "'$output_file'"
+                if wget --retry-on-http-error=502,503 -N --content-disposition -P "'"$apksfolder"'" "$url"; then
+                    echo "$line" >> "'"$output_file"'"
                 fi
             '
+
             break;;
         "Não")
+            echo
             echo "Operação Finalizada."
+            echo
             break;;
     esac
 done
